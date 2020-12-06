@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/test-task_SpaceX/static/css/main.e4e715c6.chunk.css",
-    "main.js": "/test-task_SpaceX/static/js/main.31ba2a9e.chunk.js",
-    "main.js.map": "/test-task_SpaceX/static/js/main.31ba2a9e.chunk.js.map",
+    "main.js": "/test-task_SpaceX/static/js/main.8661099d.chunk.js",
+    "main.js.map": "/test-task_SpaceX/static/js/main.8661099d.chunk.js.map",
     "runtime-main.js": "/test-task_SpaceX/static/js/runtime-main.89a4e6f7.js",
     "runtime-main.js.map": "/test-task_SpaceX/static/js/runtime-main.89a4e6f7.js.map",
     "static/js/2.81b02747.chunk.js": "/test-task_SpaceX/static/js/2.81b02747.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.89a4e6f7.js",
     "static/js/2.81b02747.chunk.js",
     "static/css/main.e4e715c6.chunk.css",
-    "static/js/main.31ba2a9e.chunk.js"
+    "static/js/main.8661099d.chunk.js"
   ]
 }
