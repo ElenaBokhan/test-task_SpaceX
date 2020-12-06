@@ -1,0 +1,126 @@
+
+.container {
+	max-width: 920px;
+	min-height: 100%;
+	margin: 0 auto;
+	padding: 60px 150px;
+	background-color: #e8e8e8;
+}
+h1, h3{
+	text-align: center;
+	color: rgb(58, 75, 78);
+	margin-bottom: 30px;
+}
+.select-bar{	
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+.select-bar-item{
+	margin-top: 10px;
+}
+select{
+	width: 245px;
+	border: 1px solid #9a9a9a;
+	color: cadetblue;
+	padding: 10px;
+	outline: none;
+	font-size: 12px;
+}
+p{
+	color: rgb(123 127 128);
+	margin-bottom: 10px;
+}
+.launches-item{
+	border-bottom: 1px solid gray;
+	padding: 20px 0;
+	display: grid;
+	grid-template-areas: 
+		"img title date"
+		"img details details";	  
+	grid-template-rows: 1fr 5fr ;
+	grid-template-columns: 20% 1fr;  
+	grid-column-gap: 15px;
+}
+.launches-item:last-child{
+	border: none;
+}
+.launches-item img{
+	grid-area: img;
+	margin: auto;
+}
+h4{
+	color: rgb(58, 75, 78);;
+	grid-area: title;
+}
+time{
+	color: rgb(123 127 128);
+	grid-area: date;
+	font-size: 14px;
+}
+.details{
+	grid-area: details;
+	font-size: 14px;
+	text-align: justify;
+}
+.noResult{
+	font-size: 36px;
+	margin: auto;
+	color: rgb(141 166 173);
+}
+.preloader{
+	margin: auto;
+	display: block;
+}
+@media (max-width: 800px){
+	.container {		
+		padding: 60px 70px;
+	}
+	.launches-item{
+		grid-template-areas: 
+		"img title date"
+		"img details details";	  
+	grid-template-rows: 1fr 5fr ;
+	grid-template-columns: 33% 1fr;  
+	grid-column-gap: 15px;
+	}	
+}
+@media (max-width: 576px){
+	.container {		
+		padding: 10px 20px;		
+	}
+	.select-bar{
+		flex-wrap: wrap;
+		max-width: 350px;
+	}
+	.select-bar-item{
+		flex-wrap: wrap;
+		width: 100%;
+	}
+	select{
+		width: 100%;
+	}
+	.launches-item{
+		grid-template-areas:
+        "img img"
+        "title date"
+        "details details";
+		grid-template-rows: 190px 50px 1fr;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 15px;
+	}
+	.launches-item:last-child{
+		border: none;
+	}
+	.launches-item img{
+		height: 180px;
+	}
+	h4{
+	    margin: auto 0;
+	}
+	time{
+		margin: auto 0;
+		text-align: end;
+	}
+}
