@@ -10,6 +10,9 @@ type responseLaunchPads = Array<LaunchPadType>
 type responseRocket = Array<RocketType>
 
 export const API = {
+    getAllLaunches(){
+      return instance.get<responseLaunches>(`/launches`).then(res => res.data)
+    },
     getRocketLaunches(param: string){
       return instance.get<responseLaunches>(`/launches?rocket_name=${param}`).then(res => res.data)
     },

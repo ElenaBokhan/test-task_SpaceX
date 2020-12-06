@@ -38,6 +38,15 @@ type setSelectedFieldActionType = {
 }
 export const setSelectedFieldAC = (field: string): setSelectedFieldActionType => ({type: SET_SELECTED_FIELD,field})
 
+export const getAllLaunchesThunk = ():ThunkAction<void, AppStateType, unknown, ActionType> => async dispatch => {
+    const response = await API.getAllLaunches()
+    try {
+        dispatch(setLaunchesAC(response))       
+    } 
+    catch(e) {
+        console.log(e)
+    }    
+}
 export const getRocketLaunchesThunk = (param: string):ThunkAction<void, AppStateType, unknown, ActionType> => async dispatch => {
     const response = await API.getRocketLaunches(param)
     try {

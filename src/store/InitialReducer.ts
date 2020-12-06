@@ -2,6 +2,7 @@ import { AppStateType } from './index';
 import { ThunkAction } from "redux-thunk";
 import { getAllLaunchPadsThunk } from "./LaunchPadsReducer";
 import { getAllRocketsThunk } from "./RocketsReducer";
+import { getAllLaunchesThunk } from "./LaunchesReducer";
 
 const INITIAL_APP = "INITIAL-APP";
 
@@ -27,10 +28,10 @@ type initialAppActionType = {
 export const initialAppAC = ():initialAppActionType  => ({type: INITIAL_APP})
 
 export const initThunkCreator = ():ThunkAction<void, AppStateType, unknown, ActionType> => async dispatch => {
-	
+	let promiseLaunches = dispatch(getAllLaunchesThunk());
     let promiseLaunchPads = dispatch(getAllLaunchPadsThunk());
     let promiseRockets = dispatch(getAllRocketsThunk());
     
-    Promise.all([promiseLaunchPads, promiseRockets])
+    Promise.all([promiseLaunches, promiseLaunchPads, promiseRockets])
            .then(()=> dispatch(initialAppAC()))           
 };

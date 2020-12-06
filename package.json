@@ -2,7 +2,7 @@
   "name": "test_task_space-x",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://elenabokhan.github.io/test_task_spaceX",
+  "homepage": "https://elenabokhan.github.io/test-task_SpaceX",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
