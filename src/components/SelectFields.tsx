@@ -1,16 +1,25 @@
 import React from "react";
-import { connect } from "react-redux";
-import { AppStateType } from "../store";
+import { useDispatch, useSelector } from "react-redux";
 import { getRocketLaunchesThunk, getPadLaunchesThunk } from '../store/LaunchesReducer';
-import { LaunchPadType, RocketType } from "../type/type";
+import { getDataAllLaunchPads, getDataAllRockets } from "../store/selectors";
 
-let SelectFields: React.FC<mapStatePropsType & mapDispatchPropsType> = ({ getRocketLaunchesThunk, getPadLaunchesThunk, dataAllLaunchPads, dataAllRockets }) => {
 
+export const SelectFields: React.FC = () => {
+    
+    const dataAllLaunchPads = useSelector(getDataAllLaunchPads);
+    const dataAllRockets = useSelector(getDataAllRockets);
+    const dispatch = useDispatch();
+    const getPadLaunches = (name: string) => {
+        dispatch(getPadLaunchesThunk(name))
+    }
+    const getRocketLaunches = (name: string) => {
+        dispatch(getRocketLaunchesThunk(name))
+    }
     return  <section className = "select-bar">
                 <div className = "select-bar-item">
                     <p>Launch Pads</p> 
                     <select defaultValue="" 
-                            onChange = { (e) => getPadLaunchesThunk(e.target.value) }>
+                            onChange = { (e) => getPadLaunches(e.target.value) }>
                         <option value = "" disabled hidden>Select pad</option>
                         {dataAllLaunchPads.map((el, index) => {
                             return  <option value = { el.site_id } 
@@ -21,7 +30,7 @@ let SelectFields: React.FC<mapStatePropsType & mapDispatchPropsType> = ({ getRoc
                 <div className = "select-bar-item">
                     <p>Rockets</p>
                     <select defaultValue="" 
-                            onChange = { (e) => getRocketLaunchesThunk(e.target.value) } 
+                            onChange = { (e) => getRocketLaunches(e.target.value) } 
                             placeholder = "select rocket">
                         <option  value = "" disabled hidden>Select rocket</option>
                         {dataAllRockets.map((el, index) => {
@@ -32,19 +41,3 @@ let SelectFields: React.FC<mapStatePropsType & mapDispatchPropsType> = ({ getRoc
                 </div>       
             </section>
 }
-type mapStatePropsType = {
-    dataAllLaunchPads: Array<LaunchPadType>
-	dataAllRockets: Array<RocketType>
-}
-type mapDispatchPropsType = {
-    getRocketLaunchesThunk: (name: string) => void
-    getPadLaunchesThunk: (name: string) => void
-}
-const mapStateToProps = (state: AppStateType): mapStatePropsType => ({
-    dataAllLaunchPads: state.LaunchPadsReducer.dataAllLaunchPads,	
-	dataAllRockets: state.RocketsReducer.dataAllRockets,
-})
-
-
-export default SelectFields = connect<mapStatePropsType, mapDispatchPropsType, {}, AppStateType>(mapStateToProps, { getRocketLaunchesThunk, getPadLaunchesThunk })(SelectFields)
-

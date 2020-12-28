@@ -1,5 +1,3 @@
-import { type } from "os"
-
 export type launchType = {
     crew: null
     details: null | string

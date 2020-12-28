@@ -1,11 +1,11 @@
-import { connect } from "react-redux";
-import LaunchesList from "./LaunchesList";
+import { useSelector } from "react-redux";
+import { LaunchesList } from "./LaunchesList";
 import React from "react";
-import { AppStateType } from "../store";
-import { launchType } from "../type/type";
+import { getSelectedField, getSelectedLaunches } from "../store/selectors";
 
-let Launches: React.FC<mapStatePropsType> = ({ selectedLaunches, selectedField }) => {
-
+export const Launches: React.FC = () => {
+    const selectedLaunches = useSelector(getSelectedLaunches);
+    const selectedField = useSelector(getSelectedField);
     return <>
             { selectedLaunches.length === 0 && selectedField === "pad"
             ? <p className = "noResult">There were no successful launches from this site</p>
@@ -14,14 +14,3 @@ let Launches: React.FC<mapStatePropsType> = ({ selectedLaunches, selectedField }
             : <LaunchesList />}
            </>
 }
-type mapStatePropsType = {
-    selectedLaunches: Array<launchType>,	
-    selectedField: string | null,
-}
-const mapStateToProps = (state: AppStateType): mapStatePropsType  => ({
-    selectedLaunches: state.LaunchesReducer.selectedLaunches,	
-    selectedField: state.LaunchesReducer.selectedField,
-})
-
-export default Launches = connect<mapStatePropsType, {}, {}, AppStateType>(mapStateToProps, {})(Launches)
-

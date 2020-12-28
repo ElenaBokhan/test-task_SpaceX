@@ -1,9 +1,9 @@
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import React from "react";
-import { AppStateType } from "../store";
-import { launchType } from "../type/type";
+import { getSelectedLaunches } from "../store/selectors";
 
-let LaunchesList: React.FC<mapStatePropsType> = ({selectedLaunches}) => {
+export const LaunchesList: React.FC = () => {
+    const selectedLaunches = useSelector(getSelectedLaunches);
 
     return  <>
             {selectedLaunches.map((el, index) => { 
@@ -18,11 +18,3 @@ let LaunchesList: React.FC<mapStatePropsType> = ({selectedLaunches}) => {
             </>               
                         
 }
-type mapStatePropsType = {
-    selectedLaunches: Array<launchType>
-}
-const mapStateToProps = (state: AppStateType): mapStatePropsType => ({
-	selectedLaunches: state.LaunchesReducer.selectedLaunches,	
-})
-
-export default LaunchesList = connect<mapStatePropsType, {}, {}, AppStateType>(mapStateToProps, {})(LaunchesList)
